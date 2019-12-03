@@ -2,13 +2,11 @@
 # coding: utf-8
 
 import pandas as pd
-# This file contains credentials like your YouTube API
-from config import config
-# This module contains the main function to make this code work
-from docs import youtube_data_module_10 as ytd
+from docs import youtube_data_module as ytd
+import os
 
 # Get your YouTube API.
-YOUTUBE_API = config.config.get('YouTube').get('YOUTUBE_API')
+YOUTUBE_API = os.getenv('YOUTUBE_API_KEY')
 
 # Create credential object to use the YouTube API
 youtube = ytd.youtubeAPIkey(YOUTUBE_API)

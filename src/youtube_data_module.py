@@ -1,3 +1,5 @@
+# YouTube Data Module Version 10
+
 #Explorer: https://developers.google.com/apis-explorer/#search/youtube/youtube/v3/youtube.search.list?part=snippet&channelId=UCSk9vb0Kc2WewD4IwvLJ9Iw&maxResults=50&_h=1&
 #Documentation and source code: https://developers.google.com/youtube/v3/docs/search/list?apix=true
 
@@ -87,7 +89,7 @@ def videoIdList(youtube, channelId):
     Return a list of all public video ids (in a specific channel)
     '''
     videoIdList = []
-    
+
     requestChannelsList = youtube.channels().list(
         part="contentDetails"
         #,categoryId="string"
@@ -198,17 +200,17 @@ def video_snippets(youtube, video_id_list, maxResults=50):
     status 2
     topicDetails 2
     '''
-    
+
     video_id_chunks = list_slice(video_id_list, n=50)
-    
+
     video_snippets =[]
     for chunk in video_id_chunks:
         responseSnippet = videoSnippet(youtube, chunk)
        # [i['date_data_created'] = datetime.datetime.now(tz=pytz.UTC) for i in responseSnippet['items']]
         [video_snippets.append(i) for i in responseSnippet['items']]
-    
+
     return video_snippets
-    
+
 
 def youtubeOauth(scopes, api_service_name, api_version, client_secrets_file, OAUTHLIB_INSECURE_TRANSPORT):
     # Disable OAuthlib's HTTPS verification when running locally.
@@ -242,9 +244,9 @@ def get_duration_sec(pt):
 def snippets_to_dict(video_snippet_list, yt_credentials=None):
     '''Return a dictionary from a given list of one or more video snippets.\
     The dictionary is optimized for creating a dataframe'''
-    
+
     # Create an empty dictionary
-    df_data = {'videoId': [], 
+    df_data = {'videoId': [],
                'publishedAt': [],
                'channelId': [],
                'title': [],
@@ -273,12 +275,12 @@ def snippets_to_dict(video_snippet_list, yt_credentials=None):
                'thumbnails_default': [],
                'date_data_created': []
               }
-    
+
     if yt_credentials:
-        video_category_dict = videoCategories(yt_credentials)    
+        video_category_dict = videoCategories(yt_credentials)
     else:
         del df_data['category']
-        
+
     for i in video_snippet_list:
 
         df_data['videoId'].append(i.get('id'))
@@ -289,10 +291,10 @@ def snippets_to_dict(video_snippet_list, yt_credentials=None):
         df_data['channelTitle'].append(i.get('snippet').get('channelTitle'))
         df_data['tags'].append(i.get('snippet').get('tags'))
         df_data['categoryId'].append(i['snippet'].get('categoryId'))
-        
+
         if yt_credentials:
-            df_data['category'] = video_category_dict[i['snippet'].get('categoryId')]
-        
+            df_data['category'].append(video_category_dict[i['snippet'].get('categoryId')])
+
         df_data['liveBroadcastContent'].append(i['snippet'].get('liveBroadcastContent'))
         df_data['duration'].append(i['contentDetails'].get('duration'))
 
@@ -316,7 +318,7 @@ def snippets_to_dict(video_snippet_list, yt_credentials=None):
         df_data['commentCount'].append(i['statistics'].get('commentCount'))
         df_data['thumbnails_default'].append(i.get('snippet').get('thumbnails').get('default').get('url'))
         df_data['date_data_created'].append(datetime.datetime.now(tz=pytz.UTC))
-        
+
     return df_data
 
 def get_comments(youtube, videoId):
@@ -383,5 +385,5 @@ def comments_to_dict(comments):
                 df_data['canReply'].append(c['snippet'].get('canReply'))
                 df_data['totalReplyCount'].append(c['snippet'].get('totalReplyCount'))
                 df_data['isPublic'].append(c['snippet'].get('isPublic'))
-                
+
     return df_data
