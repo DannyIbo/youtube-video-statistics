@@ -20,8 +20,6 @@ import re
 import datetime
 import pytz
 
-testtt = "test"
-
 def videoCategories(youtube):
     '''Return a json file of categories and a dict, that is reduced to ids and titles'''
     request = youtube.videoCategories().list(
