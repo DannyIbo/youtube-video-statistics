@@ -1,15 +1,21 @@
 # YouTube Video Statistics
 
-## Main features
+## Description
+This is a command line tool gets data from a given channel and returns an Excel file. It takes the channel ID as input that can be extracted from the URL in the browser. Data contains videos, views, likes, comments and much more. The script is written in pyhton 3 and uses pandas to extract and transform the data.
+
+## Features
 Downloading an Excel file that contains data of videos in a given channel.
+
+## Installation & Requirements
+- You need a YouTube Data API key to make this work. I do not publish mine here. Get your own for free at [https://console.developers.google.com/](https://console.developers.google.com/)
+- On Windows 10 open the comand line and type `setx YOUTUBE_API_KEY “REPLACE_THIS_TEXT_WITH_YOUR_YOUTUBE_DATA_API_KEY”`
+- Clone this repository
+- `pip install -r requirements.txt`
 
 ## Demo Video
 Feel free to watch a [short video demo](https://www.youtube.com/watch?v=Pjt7Y3sG118&list=PLNiyoHci9a3Qien3F-WK6qD28biOy9ltE) or a [long video demo](https://www.youtube.com/watch?v=155YRdtva5k&list=PLNiyoHci9a3Qien3F-WK6qD28biOy9ltE).
 
 [![enter image description here](https://github.com/DannyIbo/youtube-video-statistics/raw/presentation/screenshots/2019125-102127.jpg)](https://www.youtube.com/watch?v=Pjt7Y3sG118&list=PLNiyoHci9a3Qien3F-WK6qD28biOy9ltE)
-
-## Description
-This is a command line tool gets data from a given channel and returns an Excel file. It takes the channel ID as input that can be extracted from the URL in the browser. Data contains videos, views, likes, comments and much more. The script is written in pyhton 3 and uses pandas to extract and transform the data.
 
 ## Returned Data Attributes
 After downloading the Excel file you will find it in the output folder: `output/`
@@ -46,9 +52,6 @@ The output Excel contains values for the following attributes/columns:
  26. commentCount
  27. thumbnails_default
 
-## Requirements
-- You need a YouTube Data API to make this work. I do not publish mine here. Get your own for free at [https://console.developers.google.com/](https://console.developers.google.com/)
-- Please check further requirements in the `requirements.txt`
 
 ## Hidden Features
 This script uses a module that I used for some other YouTube Data Analytics Tools. By far not every function in this module is used in this project so you can explore the functions that will also allow to return YouTube Search Results and comments on videos.
