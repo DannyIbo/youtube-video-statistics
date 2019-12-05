@@ -1,4 +1,4 @@
-# Youtube Video Statistics
+# YouTube Video Statistics
 
 ## Main features
 Downloading an Excel file that contains data of videos in a given channel.
@@ -56,4 +56,5 @@ Explore the module and have a closer look at `src/youtube_data_module.py`
 
 ## To Dos
 
- 1. As some users are may not familiar on how to extract a channel ID from the URL in the browser, it might be a good idea to take as input any URL that somehow connects to a channel. This could be an URL of a specific video in this channel such as [`https://www.youtube.com/watch?v=Pjt7Y3sG118`](https://www.youtube.com/watch?v=Pjt7Y3sG118), a URL of a playlist that belongs to that channel like [`https://www.youtube.com/playlist?list=PLNiyoHci9a3Qien3F-WK6qD28biOy9ltE`](https://www.youtube.com/playlist?list=PLNiyoHci9a3Qien3F-WK6qD28biOy9ltE) or a URL with a personalized URL like [`https://www.youtube.com/user/schafer5`]
+ 1. As some users are may not familiar on how to extract a channel ID from the URL in the browser, it might be a good idea to take as input any URL that somehow connects to a channel. This could be an URL of a specific video in this channel such as [`https://www.youtube.com/watch?v=Pjt7Y3sG118`](https://www.youtube.com/watch?v=Pjt7Y3sG118), a URL of a playlist that belongs to that channel like [`https://www.youtube.com/playlist?list=PLNiyoHci9a3Qien3F-WK6qD28biOy9ltE`](https://www.youtube.com/playlist?list=PLNiyoHci9a3Qien3F-WK6qD28biOy9ltE) or a URL with a personalized URL like [`https://www.youtube.com/user/schafer5`](https://www.youtube.com/user/schafer5)
+ 2. :boom: :boom::boom:Last but not least: A bowser-based online deployment would be nice :boom::boom::boom:
